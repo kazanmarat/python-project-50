@@ -1,3 +1,11 @@
+import json
+
+def json_to_dict(path):
+    path1, path2 = path
+    file1 = json.load(open(path1))
+    file2 = json.load(open(path2))
+    return file1, file2
+
 def add_prefix(content, symb=' '):
     """
     Add a prefix to the given content.
@@ -35,3 +43,18 @@ def find_files_content(file1, file2):
         else:
             result[add_prefix(content, symb='-')] = file1[content]
     return result
+
+
+def json_output(difference):
+    result = '{\n'
+    for key, value in difference.items():
+        result += f'{key}: {json.dumps(value)} \n'
+    result += '}'
+    return result
+
+
+def generate_diff(path):
+    dir1, dir2 = json_to_dict(path)
+    dif = find_files_content(dir1, dir2)
+    print(json_output(dif))
+    return json_output(dif)
