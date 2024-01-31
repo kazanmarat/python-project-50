@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import cli
+import gendiff.cli as cli
 
 def main():
     cli.collect_arguments()
