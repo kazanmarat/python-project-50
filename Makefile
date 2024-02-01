@@ -10,5 +10,8 @@ package-install:
 package-reinstall:
 	python3 -m pip install --force-reinstall --user dist/*.whl
 
+lint:
+	poetry run flake8 gendiff
+
 test:
 	poetry run gendiff tests/fixtures/file1.json tests/fixtures/file2.json 
