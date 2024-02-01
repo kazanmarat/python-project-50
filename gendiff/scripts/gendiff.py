@@ -5,7 +5,8 @@ from gendiff import generate_diff
 
 def main():
     args = cli()
-    generate_diff(args)
+    dif = generate_diff(args)
+    print(dif)
 
 if __name__ == "__main__":
     main()

@@ -56,5 +56,4 @@ def json_output(difference):
 def generate_diff(path):
     dir1, dir2 = json_to_dict(path)
     dif = find_files_content(dir1, dir2)
-    print(json_output(dif))
     return json_output(dif)
