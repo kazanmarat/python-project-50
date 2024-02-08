@@ -19,7 +19,7 @@ def add_prefix(content, symb=' '):
     Returns:
         str: The content with the prefix added.
     """
-    return symb + ' ' + content
+    return f"  {symb} {content}"
 
 
 def find_files_content(file1, file2):
@@ -62,10 +62,14 @@ def find_files_content(file1, file2):
     return result
 
 
+def to_str(word):
+    return str(word).lower()
+
+
 def json_output(difference):
     result = '{\n'
     for key, value in difference.items():
-        result += f'{key}: {json.dumps(value)} \n'
+        result += f'{key}: {to_str(value)}\n'
     result += '}'
     return result
 
