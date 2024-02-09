@@ -13,5 +13,15 @@ package-reinstall:
 lint:
 	poetry run flake8 gendiff
 
-test:
-	poetry run gendiff tests/fixtures/file1.json tests/fixtures/file2.json 
+install:
+	poetry install
+
+check:
+	poetry run flake8 gendiff
+	poetry run pytest
+
+test-coverage:
+	poetry run pytest --cov
+
+# test:
+# 	poetry run gendiff tests/fixtures/file1.json tests/fixtures/file2.json 
