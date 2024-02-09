@@ -7,14 +7,15 @@ readme = "README.md"
 packages = [{include = "gendiff"}]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-pytest-cov = "^4.1.0"
+python = "^3.8.1"
 
 [tool.poetry.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
+pytest-cov = "^4.1.0"
+flake8 = "^7.0.0"
 
 [build-system]
 requires = ["poetry-core"]
