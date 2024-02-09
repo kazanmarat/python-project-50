@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "gendiff"}]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 pytest-cov = "^4.1.0"
 
 [tool.poetry.scripts]
