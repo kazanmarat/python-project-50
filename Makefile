@@ -21,7 +21,10 @@ check:
 	poetry run pytest
 
 test-coverage:
-	poetry run pytest --cov
+	poetry run pytest --cov=hexlet_python_package --cov-report xml
+
+# test-coverage:
+# 	poetry run pytest --cov
 
 # test:
 # 	poetry run gendiff tests/fixtures/file1.json tests/fixtures/file2.json 
