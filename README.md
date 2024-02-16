@@ -8,4 +8,6 @@
 
 
 ### Compare flat files:
-[![asciicast](https://asciinema.org/a/3RKcToiPbZDYC1b3mTbehGNBR.svg)](https://asciinema.org/a/3RKcToiPbZDYC1b3mTbehGNBR)
+[![asciicast](https://asciinema.org/a/gtXhtiZoz4Eao2FSvSnkafDeq.svg)](https://asciinema.org/a/gtXhtiZoz4Eao2FSvSnkafDeq)
+
+[![asciicast](https://asciinema.org/a/8VJ4fLXoJ4vBr9X3lxqhMu4S6.svg)](https://asciinema.org/a/8VJ4fLXoJ4vBr9X3lxqhMu4S6)
