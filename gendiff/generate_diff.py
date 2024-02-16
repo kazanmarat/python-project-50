@@ -1,4 +1,14 @@
 import json
+import yaml
+
+
+def file_to_python_obj(file):
+    if file.endswith('.json'):
+        return json.load(open(file))
+    elif file.endswith('.yml') or file.endswith('.yaml'):
+        return yaml.safe_load(open(file))
+    else:
+        raise Exception('invalid file format')
 
 
 def json_to_dict(path):
@@ -75,6 +85,9 @@ def json_output(difference):
 
 
 def generate_diff(path):
-    dir1, dir2 = json_to_dict(path)
+    file1, file2 = path
+    dir1 = file_to_python_obj(file1)
+    dir2 = file_to_python_obj(file2)
+    # dir1, dir2 = json_to_dict(path)
     dif = find_files_content(dir1, dir2)
     return json_output(dif)
