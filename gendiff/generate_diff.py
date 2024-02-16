@@ -4,18 +4,23 @@ import yaml
 
 def file_to_python_obj(file):
     if file.endswith('.json'):
-        return json.load(open(file))
+        return json_to_dict(file)
     elif file.endswith('.yml') or file.endswith('.yaml'):
-        return yaml.safe_load(open(file))
+        return yaml_to_dict(file)
     else:
-        raise Exception('invalid file format')
+        raise Exception('Invalid file format.')
 
 
 def json_to_dict(path):
-    path1, path2 = path
-    file1 = json.load(open(path1))
-    file2 = json.load(open(path2))
-    return file1, file2
+    with open(path) as file:
+        output = json.load(file)
+    return output
+
+
+def yaml_to_dict(path):
+    with open(path) as file:
+        output = yaml.safe_load(file)
+    return output
 
 
 def add_prefix(content, symb=' '):
