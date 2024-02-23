@@ -5,8 +5,8 @@ from gendiff import generate_diff
 
 
 def main():
-    args = cli()
-    dif = generate_diff(args)
+    *args, format = cli()
+    dif = generate_diff(args, format)
     print(dif)
 
 
