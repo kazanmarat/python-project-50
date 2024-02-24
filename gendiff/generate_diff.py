@@ -1,6 +1,6 @@
 import json
 import yaml
-from gendiff.stylish import format as stylish
+from gendiff.formats import stylish
 
 
 def file_to_python_obj(file):
