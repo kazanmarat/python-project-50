@@ -12,5 +12,8 @@
 
 [![asciicast](https://asciinema.org/a/8VJ4fLXoJ4vBr9X3lxqhMu4S6.svg)](https://asciinema.org/a/8VJ4fLXoJ4vBr9X3lxqhMu4S6)
 
-### Compare nested structures:
+### Compare nested structures with formatter 'stylish':
 [![asciicast](https://asciinema.org/a/evfp3cnABdNWwNadbBwBkMImh.svg)](https://asciinema.org/a/evfp3cnABdNWwNadbBwBkMImh)
+
+### Compare nested structures with formatter 'plain':
+[![asciicast](https://asciinema.org/a/lxy16KGkMmgzyCFJLuEolLUzU.svg)](https://asciinema.org/a/lxy16KGkMmgzyCFJLuEolLUzU)
