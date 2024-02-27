@@ -1,6 +1,7 @@
 import json
 import yaml
 from gendiff.formats import stylish
+from gendiff.formats import plain
 
 
 def file_to_python_obj(file):
@@ -51,10 +52,13 @@ def sort_files_content(dict1, dict2):
     return result
 
 
-def generate_diff(args, format='stylish'):
-    file1, file2 = args
+def generate_diff(file1, file2, format='stylish'):
     dict1 = file_to_python_obj(file1)
     dict2 = file_to_python_obj(file2)
     dif = sort_files_content(dict1, dict2)
     if format == 'stylish':
         return stylish(dif)
+    elif format == 'plain':
+        return plain(dif)
+    else:
+        raise Exception('Invalid format.')

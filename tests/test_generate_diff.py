@@ -7,29 +7,31 @@ path_fixtures = os.path.join('tests', 'fixtures')
 
 with open(os.path.join(path_fixtures, 'test_flat.txt')) as flat_file:
     flat_output = flat_file.read()
-flat_json = (os.path.join(path_fixtures, 'filepath1.json'),
-             os.path.join(path_fixtures, 'filepath2.json'))
-flat_yml = (os.path.join(path_fixtures, 'filepath1.yml'),
-            os.path.join(path_fixtures, 'filepath2.yml'))
-flat_json_yaml = (os.path.join(path_fixtures, 'filepath1.json'),
-                  os.path.join(path_fixtures, 'filepath2.yml'))
-
 with open(os.path.join(path_fixtures, 'test_rec.txt')) as rec_file:
     rec_output = rec_file.read()
-rec_json = (os.path.join(path_fixtures, 'filepath3.json'),
-            os.path.join(path_fixtures, 'filepath4.json'))
-rec_yaml = (os.path.join(path_fixtures, 'filepath3.yml'),
-            os.path.join(path_fixtures, 'filepath4.yml'))
+with open(os.path.join(path_fixtures, 'test_plain.txt')) as rec_plain:
+    rec_output_plain = rec_plain.read()
+
+file1_json = os.path.join(path_fixtures, 'filepath1.json')
+file2_json = os.path.join(path_fixtures, 'filepath2.json')
+file1_yml = os.path.join(path_fixtures, 'filepath1.yml')
+file2_yml = os.path.join(path_fixtures, 'filepath2.yml')
+file3_json = os.path.join(path_fixtures, 'filepath3.json')
+file4_json = os.path.join(path_fixtures, 'filepath4.json')
+file3_yml = os.path.join(path_fixtures, 'filepath3.yml')
+file4_yml = os.path.join(path_fixtures, 'filepath4.yml')
+
 
 cases = [
-    (flat_json, flat_output),
-    (flat_yml, flat_output),
-    (flat_json_yaml, flat_output),
-    (rec_json, rec_output),
-    (rec_yaml, rec_output),
+    (file1_json, file2_json, flat_output, 'stylish'),
+    (file1_yml, file2_yml, flat_output, 'stylish'),
+    (file1_json, file2_yml, flat_output, 'stylish'),
+    (file3_json, file4_json, rec_output, 'stylish'),
+    (file3_yml, file4_yml, rec_output, 'stylish'),
+    (file3_json, file4_json, rec_output_plain, 'plain'),
 ]
 
 
-@pytest.mark.parametrize('path, result', cases)
-def test_generate_diff(path, result):
-    assert generate_diff(path) == result
+@pytest.mark.parametrize('file1, file2, result, format', cases)
+def test_generate_diff(file1, file2, result, format):
+    assert generate_diff(file1, file2, format) == result

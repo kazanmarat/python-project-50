@@ -5,9 +5,9 @@ from gendiff import generate_diff
 
 
 def main():
-    *args, format = cli()
-    dif = generate_diff(args, format)
-    print(dif)
+    file_path1, file_path2, format_name = cli()
+    diff = generate_diff(file_path1, file_path2, format_name)
+    print(diff)
 
 
 if __name__ == "__main__":
