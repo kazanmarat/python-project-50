@@ -41,10 +41,12 @@ def format(dif, depth=0):
             lines.append(f'{add_prefix(key, current_depth, prefix)}: '
                          + f'{format(value, current_depth)}')
         elif type == 'changed':
+            old_value = value.get('old_value')
+            new_value = value.get('new_value')
             lines.append(f'{add_prefix(key, current_depth, symb="- ")}: '
-                         + f'{format(value[0], current_depth)}')
+                         + f'{format(old_value, current_depth)}')
             lines.append(f'{add_prefix(key, current_depth, symb="+ ")}: '
-                         + f'{format(value[1], current_depth)}')
+                         + f'{format(new_value, current_depth)}')
         # if nested dict without changes
         else:
             lines.append(f'{add_prefix(key, current_depth)}: '

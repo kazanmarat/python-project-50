@@ -2,6 +2,7 @@ import json
 import yaml
 from gendiff.formats import stylish
 from gendiff.formats import plain
+from gendiff.formats import f_json
 
 
 def file_to_python_obj(file):
@@ -43,7 +44,8 @@ def sort_files_content(dict1, dict2):
                 result[content] = {'type': 'unchanged', 'value': dict1_content}
             else:
                 result[content] = {'type': 'changed',
-                                   'value': [dict1_content, dict2_content]}
+                                   'value': {'old_value': dict1_content,
+                                             'new_value': dict2_content}}
 
         elif content in dict1:
             result[content] = {'type': 'deleted', 'value': dict1_content}
@@ -60,5 +62,7 @@ def generate_diff(file1, file2, format='stylish'):
         return stylish(dif)
     elif format == 'plain':
         return plain(dif)
+    elif format == 'json':
+        return f_json(dif)
     else:
         raise Exception('Invalid format.')

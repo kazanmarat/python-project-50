@@ -14,8 +14,10 @@ def differents(value, type):
     elif type == 'deleted':
         return 'removed'
     elif type == 'changed':
-        return (f'updated. From {rename_value(value[0])}'
-                + f' to {rename_value(value[1])}')
+        old_value = value.get('old_value')
+        new_value = value.get('new_value')
+        return (f'updated. From {rename_value(old_value)}'
+                + f' to {rename_value(new_value)}')
     else:
         return
 
