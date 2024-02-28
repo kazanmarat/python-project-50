@@ -11,6 +11,8 @@ with open(os.path.join(path_fixtures, 'test_rec.txt')) as rec_file:
     rec_output = rec_file.read()
 with open(os.path.join(path_fixtures, 'test_plain.txt')) as rec_plain:
     rec_output_plain = rec_plain.read()
+with open(os.path.join(path_fixtures, 'test_json.txt')) as json_file:
+    json_output = json_file.read()
 
 file1_json = os.path.join(path_fixtures, 'filepath1.json')
 file2_json = os.path.join(path_fixtures, 'filepath2.json')
@@ -29,6 +31,7 @@ cases = [
     (file3_json, file4_json, rec_output, 'stylish'),
     (file3_yml, file4_yml, rec_output, 'stylish'),
     (file3_json, file4_json, rec_output_plain, 'plain'),
+    (file3_json, file4_json, json_output, 'json'),
 ]
 
 
