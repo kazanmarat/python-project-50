@@ -17,3 +17,6 @@
 
 ### Compare nested structures with formatter 'plain':
 [![asciicast](https://asciinema.org/a/lxy16KGkMmgzyCFJLuEolLUzU.svg)](https://asciinema.org/a/lxy16KGkMmgzyCFJLuEolLUzU)
+
+### Compare nested structures with formatter 'json':
+[![asciicast](https://asciinema.org/a/2vyFMhRRtcMWdQUzqSySN4dzd.svg)](https://asciinema.org/a/2vyFMhRRtcMWdQUzqSySN4dzd)
