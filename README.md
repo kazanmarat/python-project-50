@@ -1,3 +1,6 @@
+The gendiff utility compares 2 configuration files. Accepts 2 arguments via the command line (paths to these files) and an option (--format): stylish, plain or json. The default option is stylish. File formats can be yml or json. The video below shows examples of work.
+
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/kazanmarat/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/kazanmarat/python-project-50/actions)
 

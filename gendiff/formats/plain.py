@@ -1,4 +1,7 @@
 def rename_value(value):
+    '''
+    Function to rename a value to a different representation.
+    '''
     if isinstance(value, dict):
         return '[complex value]'
     incorrect_view = {False: 'false', True: 'true', None: 'null'}
@@ -9,6 +12,11 @@ def rename_value(value):
 
 
 def differents(value, type):
+    '''
+    Return a string based on the given type and value,
+    using the rename_value
+    function to format the output.
+    '''
     if type == 'added':
         return f'added with value: {rename_value(value)}'
     elif type == 'deleted':
@@ -23,6 +31,17 @@ def differents(value, type):
 
 
 def properties(dif, parent=''):
+    '''
+    Generate a list of properties and their differences.
+
+    Args:
+        dif: A dictionary representing the input differences.
+        parent: A string representing of the full path to the root
+                (default is an empty string).
+
+    Returns:
+        A list of tuples containing the property name and its differences.
+    '''
     lines = []
     types = {'added',
              'deleted',
@@ -42,6 +61,9 @@ def properties(dif, parent=''):
 
 
 def format(dif):
+    '''
+    Format the given difference and return
+    a string representation of its properties.'''
     property = properties(dif)
     result = []
     for name, feature in property:

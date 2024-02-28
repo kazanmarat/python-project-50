@@ -2,6 +2,14 @@ import argparse
 
 
 def collect_arguments():
+    '''
+    Collects and parses command line arguments for file comparison.
+
+    Returns:
+    - first_file: str, the path to the first file for comparison
+    - second_file: str, the path to the second file for comparison
+    - format: str, the format of the output (default: 'stylish')
+    '''
     parser = argparse.ArgumentParser(
         description='Compares two configuration files and shows a difference.',
         prog='gendiff')

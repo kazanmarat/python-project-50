@@ -5,11 +5,21 @@ INDENT = ' '
 
 
 def add_prefix(content, depth, symb=''):
+    '''
+    Adds a prefix to the given content string
+    based on the depth and symbol provided.
+    '''
     depth_indent = INDENT * (depth * 4 - len(symb))
     return f"{depth_indent}{symb}{content}"
 
 
 def rename_bool(word):
+    '''
+    Takes a word as input and returns its
+    corresponding string representation
+    from the incorrect_view dictionary,
+    or the word itself if not found.
+    '''
     incorrect_view = {False: 'false', True: 'true', None: 'null'}
     if word in incorrect_view:
         return incorrect_view[word]
@@ -18,6 +28,17 @@ def rename_bool(word):
 
 
 def format(dif, depth=0):
+    '''
+    Recursively formats a nested dictionary `dif`
+    and returns a string representation.
+
+    Args:
+        dif: The input nested dictionary to be formatted.
+        depth: The current depth of the recursion (default is 0).
+
+    Returns:
+        A string representation of the formatted nested dictionary.
+    '''
     if not isinstance(dif, dict):
         return f'{rename_bool(dif)}'
     current_indent = INDENT * 4 * depth
