@@ -4,7 +4,9 @@ def rename_value(value):
     '''
     if isinstance(value, dict):
         return '[complex value]'
-    if isinstance(value, (int, str)) and not isinstance(value, bool):
+    elif isinstance(value, (int)) and not isinstance(value, bool):
+        return value
+    elif isinstance(value, (str)) and not isinstance(value, bool):
         return f"'{value}'"
     correct_view = {False: 'false', True: 'true', None: 'null'}
     return correct_view[value]
