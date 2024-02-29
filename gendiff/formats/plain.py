@@ -4,11 +4,10 @@ def rename_value(value):
     '''
     if isinstance(value, dict):
         return '[complex value]'
-    incorrect_view = {False: 'false', True: 'true', None: 'null'}
-    if value in incorrect_view:
-        return incorrect_view[value]
-    else:
+    if isinstance(value, (int, str)) and not isinstance(value, bool):
         return f"'{value}'"
+    correct_view = {False: 'false', True: 'true', None: 'null'}
+    return correct_view[value]
 
 
 def differents(value, type):

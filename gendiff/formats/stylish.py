@@ -13,18 +13,14 @@ def add_prefix(content, depth, symb=''):
     return f"{depth_indent}{symb}{content}"
 
 
-def rename_bool(word):
+def rename_value(value):
     '''
-    Takes a word as input and returns its
-    corresponding string representation
-    from the incorrect_view dictionary,
-    or the word itself if not found.
+    Rename bool value to their original representation.
     '''
-    incorrect_view = {False: 'false', True: 'true', None: 'null'}
-    if word in incorrect_view:
-        return incorrect_view[word]
-    else:
-        return word
+    if isinstance(value, (int, str)) and not isinstance(value, bool):
+        return value
+    correct_view = {False: 'false', True: 'true', None: 'null'}
+    return correct_view[value]
 
 
 def format(dif, depth=0):
@@ -40,7 +36,7 @@ def format(dif, depth=0):
         A string representation of the formatted nested dictionary.
     '''
     if not isinstance(dif, dict):
-        return f'{rename_bool(dif)}'
+        return f'{rename_value(dif)}'
     current_indent = INDENT * 4 * depth
     current_depth = depth + 1
     types = {'added': "+ ",
