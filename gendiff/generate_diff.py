@@ -1,38 +1,7 @@
-import json
-import yaml
 from gendiff.formats import stylish
 from gendiff.formats import plain
 from gendiff.formats import json_format
-
-
-def file_to_python_obj(file):
-    '''
-    Converts a file to a Python object based on the file format.
-    '''
-    if file.endswith('.json'):
-        return json_to_dict(file)
-    elif file.endswith('.yml') or file.endswith('.yaml'):
-        return yaml_to_dict(file)
-    else:
-        raise Exception('Invalid file format.')
-
-
-def json_to_dict(path):
-    '''
-    Convert a JSON file to a Python dictionary.
-    '''
-    with open(path) as file:
-        output = json.load(file)
-    return output
-
-
-def yaml_to_dict(path):
-    '''
-    Convert a YAML file to a Python dictionary.
-    '''
-    with open(path) as file:
-        output = yaml.safe_load(file)
-    return output
+from gendiff.parser import parse
 
 
 def sort_files_content(dict1, dict2):
@@ -75,7 +44,7 @@ def sort_files_content(dict1, dict2):
     return result
 
 
-def generate_diff(file1, file2, format='stylish'):
+def generate_diff(file1, file2, format):
     '''
     Generate the difference between two files and return
     the result in the specified format.
@@ -92,8 +61,8 @@ def generate_diff(file1, file2, format='stylish'):
     Raises:
         Exception: If an invalid format is provided.
     '''
-    dict1 = file_to_python_obj(file1)
-    dict2 = file_to_python_obj(file2)
+    dict1 = parse(file1)
+    dict2 = parse(file2)
     dif = sort_files_content(dict1, dict2)
     if format == 'stylish':
         return stylish(dif)

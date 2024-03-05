@@ -5,14 +5,12 @@ from gendiff import generate_diff
 
 path_fixtures = os.path.join('tests', 'fixtures')
 
-with open(os.path.join(path_fixtures, 'test_flat.txt')) as flat_file:
-    flat_output = flat_file.read()
-with open(os.path.join(path_fixtures, 'test_rec.txt')) as rec_file:
-    rec_output = rec_file.read()
-with open(os.path.join(path_fixtures, 'test_plain.txt')) as rec_plain:
-    rec_output_plain = rec_plain.read()
-with open(os.path.join(path_fixtures, 'test_json.txt')) as json_file:
-    json_output = json_file.read()
+
+def read_file(path):
+    with open(os.path.join(path_fixtures, path)) as file:
+        output = file.read()
+    return output
+
 
 file1_json = os.path.join(path_fixtures, 'filepath1.json')
 file2_json = os.path.join(path_fixtures, 'filepath2.json')
@@ -25,16 +23,16 @@ file4_yml = os.path.join(path_fixtures, 'filepath4.yml')
 
 
 cases = [
-    (file1_json, file2_json, flat_output, 'stylish'),
-    (file1_yml, file2_yml, flat_output, 'stylish'),
-    (file1_json, file2_yml, flat_output, 'stylish'),
-    (file3_json, file4_json, rec_output, 'stylish'),
-    (file3_yml, file4_yml, rec_output, 'stylish'),
-    (file3_json, file4_json, rec_output_plain, 'plain'),
-    (file3_json, file4_json, json_output, 'json'),
+    (file1_json, file2_json, 'test_flat.txt', 'stylish'),
+    (file1_yml, file2_yml, 'test_flat.txt', 'stylish'),
+    (file1_json, file2_yml, 'test_flat.txt', 'stylish'),
+    (file3_json, file4_json, 'test_rec.txt', 'stylish'),
+    (file3_yml, file4_yml, 'test_rec.txt', 'stylish'),
+    (file3_json, file4_json, 'test_plain.txt', 'plain'),
+    (file3_json, file4_json, 'test_json.txt', 'json'),
 ]
 
 
 @pytest.mark.parametrize('file1, file2, result, format', cases)
 def test_generate_diff(file1, file2, result, format):
-    assert generate_diff(file1, file2, format) == result
+    assert generate_diff(file1, file2, format) == read_file(result)
