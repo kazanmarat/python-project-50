@@ -44,7 +44,7 @@ def sort_files_content(dict1, dict2):
     return result
 
 
-def generate_diff(file1, file2, format):
+def generate_diff(file1, file2, format='stylish'):
     '''
     Generate the difference between two files and return
     the result in the specified format.
